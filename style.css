@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: rgb(18, 18, 49);
+}
+#span {
+    font-family: 'Old English Five', sans-serif;
+}
+#popupBtn {
+    font-family: 'Old English Five', sans-serif;
+    font-size: medium;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: lightgrey;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#popupBtn:hover {
+    background-color: #ddd;
+}
+#gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    border: 2px solid #333;
+    margin-top: 30px;
+    background-color: lightblue;
+}
+@keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(0, 200, 255, 1);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+    }
+}
+.glow {
+    animation: glow 3s infinite ease-in-out;
+}
+#buttonContainer {
+    margin-top: 10px;
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+}
+.popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    z-index: 1000;
+}
+#inputContainer {
+    display: flex;
+    flex-direction: column;
+}
