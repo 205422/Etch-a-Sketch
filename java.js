@@ -74,4 +74,25 @@ okBtn.addEventListener("click", () => {
         alert ("Please enter a number between 1 and 100");
         return;
     }
+
+    gridContainer.innerHTML = "";
+
+    //Create grid
+    function createGrid(size) {
+        const totalCells = size * size;
+        const cellSize = 100 / size + "%";
+
+        for (let i = 0; i < totalCells; i++) {
+            const cell = document.createElement("div");
+            cell.style.width = cellSize;
+            cell.style.height = cellSize;
+            cell.style.border = "1px solid #333";
+            cell.style.boxSizing = "border-box";
+
+            gridContainer.appendChild(cell);
+        }
+    }
+
+    createGrid(size);
+    popup.style.display = "none";
 });
