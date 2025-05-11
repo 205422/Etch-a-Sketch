@@ -81,6 +81,10 @@ okBtn.addEventListener("click", () => {
     function createGrid(size) {
         const totalCells = size * size;
         const cellSize = 100 / size + "%";
+        let isMouseDown = false;
+
+        document.body.addEventListener("mousedown", () => isMouseDown = true);
+        document.body.addEventListener("mouseup", () => isMouseDown = false);
 
         for (let i = 0; i < totalCells; i++) {
             const cell = document.createElement("div");
@@ -89,9 +93,24 @@ okBtn.addEventListener("click", () => {
             cell.style.border = "1px solid #333";
             cell.style.boxSizing = "border-box";
             
-            //Hover effect
+            cell.setAttribute("data-darken", "0");
             cell.addEventListener("mouseover", () => {
-                cell.style.backgroundColor = "black";
+                if (!isMouseDown) return;
+
+                let darkenLevel = parseInt(cell.getAttribute("data-darken")) || 0;
+            
+            
+                if (!cell.style.backgroundColor || cell.style.backgroundColor === "transparent") {
+                    const r = Math.floor(Math.random() * 256);
+                    const g = Math.floor(Math.random() * 256);
+                    const b = Math.floor(Math.random() * 256);
+                    cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                } else if (darkenLevel < 10) {
+                    darkenLevel++;
+                    cell.setAttribute("data-darken", darkenLevel.toString());
+                    const brightness = 100 - darkenLevel * 10;
+                    cell.style.filter = `brightness(${brightness}%)`;
+                }
             });
 
             gridContainer.appendChild(cell);
