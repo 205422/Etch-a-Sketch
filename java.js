@@ -66,3 +66,12 @@ popupBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
     popup.style.display = "none";
 });
+
+//Alert if less than 1 or more than 100
+okBtn.addEventListener("click", () => {
+    const size = parseInt(input.value);
+    if (isNaN(size) || size < 1 || size > 100) {
+        alert ("Please enter a number between 1 and 100");
+        return;
+    }
+});
