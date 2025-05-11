@@ -2,12 +2,13 @@
 const gridContainer = document.getElementById("gridContainer");
 gridContainer.classList.add("glow");
 
-//Create popup button
+//Create change layout button
 const popupBtn = document.createElement("button");
 popupBtn.setAttribute("id", "popupBtn");
 popupBtn.textContent = "Change Layout";
 document.body.insertBefore(popupBtn, gridContainer);
 
+//Create popup container
 const popup = document.createElement("div");
 popup.setAttribute("id", "popup");
 popup.classList.add("popup");
@@ -46,7 +47,6 @@ const buttonContainer = document.createElement("div");
 buttonContainer.setAttribute("id", "buttonContainer");
 buttonContainer.appendChild(cancelBtn);
 buttonContainer.appendChild(okBtn);
-
 
 //Build popup structure
 popup.appendChild(spanContainer);
@@ -88,6 +88,11 @@ okBtn.addEventListener("click", () => {
             cell.style.height = cellSize;
             cell.style.border = "1px solid #333";
             cell.style.boxSizing = "border-box";
+            
+            //Hover effect
+            cell.addEventListener("mouseover", () => {
+                cell.style.backgroundColor = "black";
+            });
 
             gridContainer.appendChild(cell);
         }
